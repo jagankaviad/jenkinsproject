@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>sample-app</artifactId>
+    <artifactId>jenkinsapp</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
 
@@ -22,7 +22,7 @@
     </dependencies>
 
     <build>
-        <finalName>sample-app</finalName>
+        <finalName>jenkinsapp</finalName>
     </build>
 
 </project>
