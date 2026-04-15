@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         TOMCAT_IP = "172.31.39.78"
-        KEY = "/var/lib/jenkins/.ssh/tomcat.pem"
+        KEY = "KEY = "/var/lib/jenkins/.ssh/id_rsa""
     }
 
     stages {
