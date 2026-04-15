@@ -8,16 +8,13 @@ pipeline {
 
     environment {
         TOMCAT_IP = "172.31.39.78"
-        KEY = "KEY = "/var/lib/jenkins/.ssh/id_rsa""
     }
 
     stages {
 
-        stage('Check Tools') {
+        stage('Checkout') {
             steps {
-                sh 'echo $PATH'
-                sh 'which mvn'
-                sh 'mvn -version'
+                git branch: 'main', url: 'https://github.com/jagankaviad/jenkinsproject.git'
             }
         }
 
@@ -27,11 +24,10 @@ pipeline {
             }
         }
 
-        stage('Deploy to Tomcat') {
+        stage('Deploy') {
             steps {
                 sh '''
-                chmod 400 $KEY
-                scp -o StrictHostKeyChecking=no -i $KEY target/jenkinsapp.war ec2-user@$TOMCAT_IP:/opt/tomcat/webapps/
+                cp target/jenkinsapp.war /opt/tomcat/webapps/
                 '''
             }
         }
