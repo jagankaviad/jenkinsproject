@@ -18,6 +18,15 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/jagankaviad/jenkinsproject.git'
             }
         }
+        stages {
+
+        stage('Check Tools') {
+            steps {
+                sh 'echo $PATH'
+                sh 'which mvn'
+                sh 'mvn -version'
+            }
+        }
 
         stage('Build') {
             steps {
