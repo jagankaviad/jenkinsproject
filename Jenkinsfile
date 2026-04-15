@@ -8,17 +8,10 @@ pipeline {
 
     environment {
         TOMCAT_IP = "172.31.39.78"
-        KEY = "tomcat.pem"
+        KEY = "/var/lib/jenkins/.ssh/tomcat.pem"
     }
 
     stages {
-
-        stage('Clone Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/jagankaviad/jenkinsproject.git'
-            }
-        }
-        stages {
 
         stage('Check Tools') {
             steps {
@@ -37,6 +30,7 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 sh '''
+                chmod 400 $KEY
                 scp -o StrictHostKeyChecking=no -i $KEY target/jenkinsapp.war ec2-user@$TOMCAT_IP:/opt/tomcat/webapps/
                 '''
             }
