@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                cp target/jenkinsapp.war /opt/tomcat/webapps/
+                scp target/jenkinsapp.war ec2-user@172.31.39.78:/opt/tomcat/webapps/
                 '''
             }
         }
